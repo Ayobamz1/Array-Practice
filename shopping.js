@@ -21,23 +21,23 @@ function addItem() {
 }
 
 function deleteItem() {
-    // cart.pop();
-    cart.splice(-1, 1);
+  // cart.pop();
+  cart.splice(-1, 1);
 
-    document.getElementById("displayArea").innerHTML = "";
-        for (let index = 0; index < cart.length; index++) {
-      document.getElementById("displayArea").innerHTML +=
-        `<p>${index + 1}. ${cart[index]}</p>`;
-    }
+  document.getElementById("displayArea").innerHTML = "";
+  for (let index = 0; index < cart.length; index++) {
+    document.getElementById("displayArea").innerHTML +=
+      `<p>${index + 1}. ${cart[index]}</p>`;
+  }
 }
 
 function deleteAll() {
-    cart = cart.slice(0, 0)
-    // cart.splice(0);
+  cart = cart.slice(0, 0);
+  // cart.splice(0);
 
-        document.getElementById("displayArea").innerHTML = "";
-        for (let index = 0; index < cart.length; index++) {
-      document.getElementById("displayArea").innerHTML +=
-        `<p>${index + 1}. ${cart[index]}</p>`;
-    }
+  document.getElementById("displayArea").innerHTML = "";
+  for (let index = 0; index < cart.length; index++) {
+    document.getElementById("displayArea").innerHTML +=
+      `<p>${index + 1}. ${cart[index]}</p>`;
+  }
 }
