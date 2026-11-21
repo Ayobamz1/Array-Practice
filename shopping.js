@@ -5,6 +5,6 @@ function addItem() {
 
   if (input.trim() == "") {
     let displayArea = document.getElementById("displayArea");
-    displayArea.innerHTML = "Enter an Item";
+    displayArea.innerHTML = "Enter an Item".toUpperCase();
   }
 }
