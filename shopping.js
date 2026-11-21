@@ -32,8 +32,8 @@ function deleteItem() {
 }
 
 function deleteAll() {
-    // cart.splice(0);
     cart = cart.slice(0, 0)
+    // cart.splice(0);
 
         document.getElementById("displayArea").innerHTML = "";
         for (let index = 0; index < cart.length; index++) {
