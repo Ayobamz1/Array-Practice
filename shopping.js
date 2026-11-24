@@ -3,41 +3,71 @@ let cart = [];
 function addItem() {
   let input = document.getElementById("input").value;
   let alertBox = document.getElementById("display");
-  let displayArea = document.getElementById("displayArea");
 
   if (input.trim() == "") {
-    alertBox.innerHTML = "Enter an Item".toUpperCase();
+    alertBox.innerHTML = "ENTER AN ITEM";
   } else {
     alertBox.innerHTML = "";
     cart.push(input);
     document.getElementById("input").value = "";
-    displayArea.innerHTML = "";
 
-    for (let index = 0; index < cart.length; index++) {
-      document.getElementById("displayArea").innerHTML +=
-        `<p>${index + 1}. ${cart[index]}</p>`;
-    }
+    displayItem();
+  }
+}
+
+function displayItem() {
+  let displayArea = document.getElementById("displayArea");
+
+  displayArea.innerHTML = "";
+
+  if (cart.length == 0) {
+    displayArea.innerHTML = "Your Item(s) will show here";
+  }
+
+  for (let index = 0; index < cart.length; index++) {
+    displayArea.innerHTML += `
+      <p>${index + 1}. ${cart[index]}</p>
+      <button onclick="removeItem(${index})" class="btn btn-primary mb-3">
+        Delete
+      </button>
+    `;
   }
 }
 
 function deleteItem() {
-  // cart.pop();
-  cart.splice(-1, 1);
+  let check = confirm("Are you sure you want to delete?");
 
-  document.getElementById("displayArea").innerHTML = "";
-  for (let index = 0; index < cart.length; index++) {
-    document.getElementById("displayArea").innerHTML +=
-      `<p>${index + 1}. ${cart[index]}</p>`;
+  if (check) {
+    displayItem();
+  }
+
+  if (cart.length == 0) {
+    alert("There is nothing to delete");
+  } else {
+    cart.splice(-1, 1);
+    displayItem();
   }
 }
 
 function deleteAll() {
-  cart = cart.slice(0, 0);
-  // cart.splice(0);
+  let check = confirm("Are you sure you want to delete?");
 
-  document.getElementById("displayArea").innerHTML = "";
-  for (let index = 0; index < cart.length; index++) {
-    document.getElementById("displayArea").innerHTML +=
-      `<p>${index + 1}. ${cart[index]}</p>`;
+  if (check) {
+    displayItem();
+  }
+  if (cart.length == 0) {
+    alert("There is nothing to delete");
+  } else {
+    cart = [];
+    displayItem();
+  }
+}
+
+function removeItem(i) {
+  let check = confirm("Are you sure you want to delete?");
+
+  if (check) {
+    cart.splice(i, 1);
+    displayItem();
   }
 }
